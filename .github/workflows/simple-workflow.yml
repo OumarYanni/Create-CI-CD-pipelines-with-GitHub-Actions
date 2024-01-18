@@ -1,0 +1,30 @@
+name: Install and Run Lint and Typecheck
+
+on:
+    push:
+        branches: [main]
+        
+jobs:
+    main:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Set up Node
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                
+            - name: Install librairies
+              run: npm i
+
+            - name: Run Linter
+              run: npm run lint
+
+            - name: Run Typecheck
+              run: npm run typecheck
+
+            - name: Priting congratulations
+              run: echo "Job done! 👌🤺"
